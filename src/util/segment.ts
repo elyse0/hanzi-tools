@@ -14,7 +14,7 @@ const segmentPart = (text: string): string[] => {
             return [part].concat(segmentPart(text.slice(i)));
         }
     }
-    return [text[0]].concat(segmentPart(text.slice(1)));
+    return [];
 };
 
 const segment = (text: string): string[] => {
