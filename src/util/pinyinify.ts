@@ -4,7 +4,7 @@ import { getPinyinSegments } from 'util/segmentation';
 import { pinyinDict } from 'util/pinyinDict';
 import { getNormalizedEnglishText } from 'util/punctuation';
 import { isCharacterText } from 'util/util';
-import { tag } from 'util/tag';
+import { getTextTags } from 'util/tag';
 
 import { HanziTools } from 'types';
 
@@ -45,8 +45,8 @@ const decideAmbiguousChar = (char: string, cuts: string[], cutIndex: number): st
         return 'jué';
     case '长':
     case '長':
-        prevTags = tag(previousText.join(''));
-        nextTags = tag(afterText.join(''));
+        prevTags = getTextTags(previousText.join(''));
+        nextTags = getTextTags(afterText.join(''));
         const nextTag = nextTags && nextTags.length && nextTags[0].tag;
         if (nextTag === 'uz') {
             return 'zhǎng';
@@ -62,8 +62,8 @@ const decideAmbiguousChar = (char: string, cuts: string[], cutIndex: number): st
         // but cháng is more common as an individual character.
         return 'cháng';
     case '得':
-        nextTags = tag(afterText.join(''));
-        prevTags = tag(previousText.join(''));
+        nextTags = getTextTags(afterText.join(''));
+        prevTags = getTextTags(previousText.join(''));
         if (nextTags && nextTags.length) {
             const afterTag = nextTags[0].tag;
             const prevTag = prevTags.length && prevTags[prevTags.length - 1].tag;
@@ -95,7 +95,7 @@ const decideAmbiguousChar = (char: string, cuts: string[], cutIndex: number): st
         if (previousText.join('').includes('把')) {
             return 'huán';
         }
-        nextTags = tag(afterText.join(''));
+        nextTags = getTextTags(afterText.join(''));
         if (nextTags && nextTags.length) {
             const afterTag = nextTags[0].tag;
             if (afterText[0][0] === '有') {
@@ -107,15 +107,15 @@ const decideAmbiguousChar = (char: string, cuts: string[], cutIndex: number): st
         }
         break;
     case '行':
-        prevTags = tag(previousText.join(''));
-        nextTags = tag(afterText.join(''));
+        prevTags = getTextTags(previousText.join(''));
+        nextTags = getTextTags(afterText.join(''));
         if (prevTags.length && prevTags[prevTags.length - 1].tag === 'm') {
             return 'háng';
         }
         break;
     case '只':
-        const prev = tag(previousText.join('')).slice(-1)[0];
-        const after = tag(afterText.join(''))[0];
+        const prev = getTextTags(previousText.join('')).slice(-1)[0];
+        const after = getTextTags(afterText.join(''))[0];
         if (prev && prev.tag === 'm') {
             return 'zhī';
         }
@@ -124,7 +124,7 @@ const decideAmbiguousChar = (char: string, cuts: string[], cutIndex: number): st
         }
         return 'zhǐ';
     case '系':
-        nextTags = tag(afterText.join(''));
+        nextTags = getTextTags(afterText.join(''));
         if (nextTags && nextTags.length) {
             const afterTag = nextTags[0].tag;
             if (afterTag === 'f' || afterTag[0] === 'u') {
@@ -133,14 +133,14 @@ const decideAmbiguousChar = (char: string, cuts: string[], cutIndex: number): st
         }
         return 'xì';
     case '地':
-        prevTags = tag(previousText.join(''));
-        nextTags = tag(afterText.join(''));
+        prevTags = getTextTags(previousText.join(''));
+        nextTags = getTextTags(afterText.join(''));
         if (prevTags.length && prevTags[prevTags.length - 1].tag === 'r') {
             return 'dì';
         }
         break;
     case '弹':
-        nextTags = tag(afterText.join(''));
+        nextTags = getTextTags(afterText.join(''));
         if (afterText.includes('吉他')) {
             return 'tán';
         }
@@ -152,7 +152,7 @@ const decideAmbiguousChar = (char: string, cuts: string[], cutIndex: number): st
         }
         break;
     case '重':
-        nextTags = tag(afterText.join(''));
+        nextTags = getTextTags(afterText.join(''));
         if (nextTags && nextTags.length) {
             const afterTag = nextTags[0].tag;
             if (afterTag[0] === 'v') return 'chóng';

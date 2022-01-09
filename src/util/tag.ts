@@ -1,6 +1,6 @@
 import nodejieba from 'nodejieba';
 
-const tag = (text: string) => {
+const getTextTags = (text: string) => {
     const tagResults = nodejieba.tag(text);
 
     const tags = tagResults.map(({ word, tag }) => {
@@ -14,4 +14,4 @@ const tag = (text: string) => {
     return tags.flat();
 };
 
-export { tag };
+export { getTextTags };
