@@ -19,7 +19,7 @@ const ToneMarks = [
 
 const getTone = (char: string): number => {
     // Getting and destructuring the pinyin string
-    const pinyinChars = [...pinyinDict[char]];
+    const pinyinChars = Array.from(pinyinDict[char]);
 
     // Going through the four tones and checking if there is a match
     for (let i = 0; i < 4; i += 1) {
