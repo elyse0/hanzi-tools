@@ -18,12 +18,9 @@ const segmentPart = (text: string): string[] => {
 };
 
 const segment = (text: string): string[] => {
-    const cut = nodejieba.cut(text);
-    let segments: string[] = [];
-    cut.forEach((text) => {
-        segments = segments.concat(segmentPart(text));
-    });
-    return segments;
+    const textSegments = nodejieba.cut(text);
+    const segments = textSegments.map((textSegment) => segmentPart(textSegment));
+    return segments.flat();
 };
 
 export { segment };
