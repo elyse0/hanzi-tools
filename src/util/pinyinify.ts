@@ -18,10 +18,6 @@ const ToneMarks = [
 ];
 
 const getTone = (char: string): number => {
-    if (typeof pinyinDict[char] === 'undefined') {
-        return 0;
-    }
-
     // Getting and destructuring the pinyin string
     const pinyinChars = [...pinyinDict[char]];
 
