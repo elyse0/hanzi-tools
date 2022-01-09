@@ -23,7 +23,7 @@ const getTone = (char: string): number => {
 
     // Going through the four tones and checking if there is a match
     for (let i = 0; i < 4; i += 1) {
-        if (tones[i].some((c) => pinyinChars.includes(c))) {
+        if (ToneMarks[i].some((toneCharacter) => pinyinChars.includes(toneCharacter))) {
             return i + 1;
         }
     }
