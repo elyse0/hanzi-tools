@@ -1,16 +1,17 @@
 import nodejieba from 'nodejieba';
 
 const tag = (text: string) => {
-    const tokens = nodejieba.tag(text);
-    const outTokens = [];
-    for (const { word, tag } of tokens) {
+    const tagResults = nodejieba.tag(text);
+
+    const tags = tagResults.map(({ word, tag }) => {
         if (word.length > 1 && (tag === 'x' || (tag === 'n' && word.includes('吗')))) {
-            for (const char of word) {
-                outTokens.push(nodejieba.tag(char)[0]);
-            }
-        } else outTokens.push({ word, tag });
-    }
-    return outTokens;
+            return Array.from(word).map((char) => nodejieba.tag(char)[0]);
+        }
+
+        return { word, tag };
+    });
+
+    return tags.flat();
 };
 
 export { tag };
