@@ -1,13 +1,15 @@
-let { pinyinify, simplify, traditionalize } = require("../index");
+let { pinyinify, simplify, traditionalize } = require("../dist/index");
 
 let customMatchers = {
     becomes: function (util, customTesters) {
         return {
             compare: (input, expected) => {
-                var result = {};
-                var actual = pinyinify(input);
+                let result = {};
+                let actual = pinyinify(input);
                 result.pass = util.equals(actual, expected, customTesters);
-                if (!result.pass) result.message = `Expected: ${expected}\n Actual: ${actual}.`;
+                if (!result.pass) {
+                    result.message = `Expected: ${expected}\n Actual: ${actual}.`;
+                }
                 return result;
             }
         };
