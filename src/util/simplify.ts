@@ -1,10 +1,10 @@
 import nodejieba from 'nodejieba';
 
 import { s2tDict, t2sDict } from 'util/pinyinDict';
-import { segment } from 'util/segment';
+import { getPinyinSegments } from 'util/segmentation';
 
 const simplify = (text: string): string => {
-    return segment(text).map((x) => {
+    return getPinyinSegments(text).map((x) => {
         if (x in t2sDict) {
             return t2sDict[x];
         }
@@ -58,7 +58,7 @@ const traditionalizeSpecialChar = (char: string, beforeText: string[], afterText
 };
 
 const traditionalize = (text: string): string => {
-    return segment(text).map((x, i, segments) => {
+    return getPinyinSegments(text).map((x, i, segments) => {
         if (specialChars.has(x)) {
             return traditionalizeSpecialChar(x, segments.slice(0, i), segments.slice(i + 1));
         }

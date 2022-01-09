@@ -1,6 +1,6 @@
 import pinyin from 'pinyin';
 
-import { segment } from 'util/segment';
+import { getPinyinSegments } from 'util/segmentation';
 import { pinyinDict } from 'util/pinyinDict';
 import { normalizeEnglish } from 'util/punctuation';
 import { isCharacterText } from 'util/util';
@@ -235,7 +235,7 @@ function pinyinifyChar(text: string, cuts: string[], cutIndex: number) {
 }
 
 const pinyinify = (text: string, isDetailed: boolean = false): string | HanziTools.PinyinDetailed => {
-    const segments = segment(text);
+    const segments = getPinyinSegments(text);
     let pinyinSegments: string[] = [];
     segments.forEach((text, i, segments) => {
         if (text.length === 1) {
