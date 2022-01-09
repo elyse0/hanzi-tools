@@ -2,7 +2,7 @@ import pinyin from 'pinyin';
 
 import { getPinyinSegments } from 'util/segmentation';
 import { pinyinDict } from 'util/pinyinDict';
-import { normalizeEnglish } from 'util/punctuation';
+import { getNormalizedEnglishText } from 'util/punctuation';
 import { isCharacterText } from 'util/util';
 import { tag } from 'util/tag';
 
@@ -255,15 +255,15 @@ const pinyinify = (text: string, isDetailed: boolean = false): string | HanziToo
     });
     const joinedOutput = out.join('').trim();
     if (isDetailed) {
-        pinyinSegments = pinyinSegments.map(normalizeEnglish);
+        pinyinSegments = pinyinSegments.map(getNormalizedEnglishText);
         return {
             segments,
             pinyinSegments,
             pinyinSegmentsSyllables: pinyinSegments.map((segment) => segment.split('\u200B')),
-            pinyin: normalizeEnglish(joinedOutput),
+            pinyin: getNormalizedEnglishText(joinedOutput),
         };
     }
-    return normalizeEnglish(joinedOutput);
+    return getNormalizedEnglishText(joinedOutput);
 };
 
 export default pinyinify;

@@ -1,4 +1,4 @@
-const englishReplacements: Record<string, string> = {
+const EnglishReplacements: Record<string, string> = {
     '！': '!',
     '？': '?',
     '。': '.',
@@ -15,29 +15,30 @@ const englishReplacements: Record<string, string> = {
     '】': ']',
 };
 
-const chineseReplacements: Record<string, string> = {};
-for (const k in englishReplacements) {
-    chineseReplacements[englishReplacements[k]] = k;
+const ChineseReplacements: Record<string, string> = {};
+for (const key in EnglishReplacements) {
+    ChineseReplacements[EnglishReplacements[key]] = key;
 }
 
-const normalizeText = (text: string, replacements: Record<string, string>): string => {
-    let newString = '';
-    for (const char of text) {
-        if (char in replacements) {
-            newString += replacements[char];
-        } else {
-            newString += char;
+const getNormalizedText = (text: string, replacements: Record<string, string>): string => {
+    const textCharacters = Array.from(text);
+
+    const normalizedCharacters = textCharacters.map((character) => {
+        if (character in replacements) {
+            return replacements[character];
         }
-    }
-    return newString;
+        return character;
+    });
+
+    return normalizedCharacters.join();
 };
 
-const normalizeEnglish = (text: string): string => {
-    return normalizeText(text, englishReplacements);
+const getNormalizedEnglishText = (text: string): string => {
+    return getNormalizedText(text, EnglishReplacements);
 };
 
-const normalizeChinese = (text: string): string => {
-    return normalizeText(text, chineseReplacements);
+const getNormalizedChineseText = (text: string): string => {
+    return getNormalizedText(text, ChineseReplacements);
 };
 
-export { normalizeEnglish, normalizeChinese };
+export { getNormalizedEnglishText, getNormalizedChineseText };
