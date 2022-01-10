@@ -20,7 +20,7 @@ Hanzi Tools is a collection of four different tools.
 Convert chinese characters into pinyin.
 
 ```js
-import { pinyinify } from 'hanzi-tools';
+import { pinyinify } from '@elyse0/hanzi-tools';
     
 pinyinify("转换汉字为拼音。")
 // "zhuǎnhuàn hànzì wéi pīnyīn."
@@ -31,7 +31,7 @@ pinyinify("转换汉字为拼音。")
 Divide text into words.
 
 ```js
-import { getPinyinSegments } from 'hanzi-tools';
+import { getPinyinSegments } from '@elyse0/hanzi-tools';
 
 getPinyinSegments("我在青岛市崂山区工作。");
 // [ '我', '在', '青岛市', '崂山区', '工作', '。' ]
@@ -54,7 +54,7 @@ pinyinify("人人生而自由，在尊严和权利上一律平等。", true)
 Convert traditional characters to simplified characters.
 
 ```js
-import { simplify } from 'hanzi-tools';
+import { simplify } from '@elyse0/hanzi-tools';
 
 simplify("有朋自遠方來，不亦樂乎？");
 // 有朋自远方来，不亦乐乎？
@@ -65,7 +65,7 @@ simplify("有朋自遠方來，不亦樂乎？");
 Convert simplified characters to traditional characters.
 
 ```js
-import { traditionalize } from 'hanzi-tools';
+import { traditionalize } from '@elyse0/hanzi-tools';
 
 traditionalize("起来！不愿做奴隶的人们！ 把我们的血肉，筑成我们新的长城！");
 // 起來！不願做奴隸的人們！ 把我們的血肉，築成我們新的長城！
@@ -76,7 +76,7 @@ traditionalize("起来！不愿做奴隶的人们！ 把我们的血肉，筑成
 Part-of-speech tagging.
 
 ```js
-import { getTextTags } from 'hanzi-tools';
+import { getTextTags } from '@elyse0/hanzi-tools';
 
 getTextTags('你是我最喜欢的人。');
 // [ { word: '你', tag: 'r' },

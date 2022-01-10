@@ -1,6 +1,6 @@
-import nodejieba from 'nodejieba';
+import nodejieba, { TagResult } from 'nodejieba';
 
-const getTextTags = (text: string) => {
+const getTextTags = (text: string): TagResult[] => {
     const tagResults = nodejieba.tag(text);
 
     const tags = tagResults.map(({ word, tag }) => {
