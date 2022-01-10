@@ -18,8 +18,9 @@ jobs:
         run: npm run test
       - name: Build package
         run: npm run build
-      - name: Deploy patch version
-        run: npm run deploy-patch-version
+      - run: git config --global user.name "${{ github.actor }}"
+      - run: git config --global user.email "github-action-${{ github.actor }}@users.noreply.github.com"
+      - run: npm version ${{ github.event.release.tag_name }}
       - run: npm publish --access-public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
