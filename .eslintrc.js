@@ -1,8 +1,9 @@
 module.exports = {
-    ignorePatterns: ["pinyinDict.ts"],
+    ignorePatterns: ['pinyinDict.ts'],
     env: {
         browser: true,
         es2021: true,
+        'jest/globals': true,
     },
     extends: [
         'airbnb-base',
@@ -14,6 +15,7 @@ module.exports = {
     },
     plugins: [
         '@typescript-eslint',
+        'jest',
     ],
     rules: {
         indent: ['error', 4],

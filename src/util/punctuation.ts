@@ -30,7 +30,7 @@ const getNormalizedText = (text: string, replacements: Record<string, string>): 
         return character;
     });
 
-    return normalizedCharacters.join();
+    return normalizedCharacters.join('');
 };
 
 const getNormalizedEnglishText = (text: string): string => {

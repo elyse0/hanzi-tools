@@ -14,7 +14,7 @@ const getAtomicPinyinSegments = (textSegment: string): string[] => {
             return [textSegmentPart].concat(getAtomicPinyinSegments(textSegment.slice(i)));
         }
     }
-    return [];
+    return [textSegment[0]].concat(getAtomicPinyinSegments(textSegment.slice(1)));
 };
 
 const getPinyinSegments = (text: string): string[] => {
