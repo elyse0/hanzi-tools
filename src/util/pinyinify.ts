@@ -6,7 +6,7 @@ import { getNormalizedEnglishText } from 'util/punctuation';
 import { isCharacterText } from 'util/util';
 import { getTextTags } from 'util/tag';
 
-import { HanziTools } from 'types';
+import { HanziTools } from '../../types';
 
 // Use tones[tone - 1] to get all possible characters with that tone
 const ToneMarks = [
