@@ -1,6 +1,6 @@
 # Hanzi Tools
 
-This repository is a fork of (Hanzi Tools)[https://github.com/peterolson/hanzi-tools] that ports it to Typescript.
+This repository is a fork of [Hanzi Tools](https://github.com/peterolson/hanzi-tools) that ports it to Typescript.
 It differs a little bit from the original, so it's not a replacement.
 
 Hanzi Tools is a collection of four different tools.
