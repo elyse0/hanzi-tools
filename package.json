@@ -1,31 +1,30 @@
 {
-  "name": "hanzi-tools",
-  "version": "1.2.26",
-  "author": "Peter Olson <peter.e.c.olson+npm@gmail.com>",
-  "description": "Converts from Chinese characters to pinyin, between simplified and traditional, and does word segmentation.",
-  "license": "Unlicense",
-  "main": "./index",
+  "name": "@elyse0/hanzi-tools",
+  "version": "1.0.0",
+  "author": "elyse0",
+  "description": "Chinese conversion utils (pinyin, simplification and segmentation). Fork of @peterolson/hanzi-tools",
+  "main": "index.js",
+  "files": ["dist/**/*"],
   "repository": {
     "type": "git",
-    "url": "git@github.com:peterolson/pinyinify.git"
+    "url": "git@github.com:elyse0/hanzi-tools.git"
   },
   "scripts": {
-    "test": "jest",
     "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
-    "dev": "ts-node -r tsconfig-paths/register src/index.ts"
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
+    "test": "jest",
+    "deploy-minor-version": "npm version minor --force -m \"Deploy new minor version\"",
+    "deploy-patch-version": "npm version patch --force -m \"Deploy new patch\""
   },
+  "license": "MIT",
   "keywords": [
     "pinyin",
     "chinese",
     "simplified",
     "traditional",
-    "convert",
-    "segment",
-    "汉字",
-    "拼音",
-    "简体",
-    "繁体",
-    "分词"
+    "convertion",
+    "segmentation",
+    "chinese-pinyin"
   ],
   "dependencies": {
     "@types/jest": "^27.4.0",
