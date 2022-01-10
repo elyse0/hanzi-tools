@@ -13,7 +13,7 @@ Hanzi Tools is a collection of four different tools.
 
 ## Setup
 
-    npm install hanzi-tools
+    npm install @elyse0/hanzi-tools
 
 ## pinyinify()
 
